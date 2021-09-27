@@ -19,4 +19,11 @@ class MuebleController
         $muebles = $this->model->getMuebles();
         $this->view->showMuebles($muebles);
     }
+
+    //traigo tabla de categorías
+    function getCategorias()
+    {
+        $categorias = $this->model->getCategorias();
+        $this->view->showCategorias($categorias);
+    }
 }
