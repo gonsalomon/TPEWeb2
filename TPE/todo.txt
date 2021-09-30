@@ -1,0 +1,16 @@
+-terminar con el MVC:
+    -muebles.tpl casi terminado (view)
+    -template de nav (view)
+    -agregar cosas a controller (controller)
+        -THIS sólo vengo trabajando la parte de hacer un fetch general; ver de completar el ABM con las funciones que faltan:
+            -traer uno solo
+            -modificar uno
+            -borrar uno
+    -ver si model está completo (model)
+-THIS ver de tomar cosas de controller para llamar en el route.php
+-sumar .js al footer si se necesita incluir alguno
+-traer bootstrap:
+    -ver que se necesitan agregar clases
+    -traer las URL de los CSS a incluir para hacer andar bootstrap
+    -ver de sumar botones para el funcionamiento del ABM
+last modified: Gonza, 26/9/21 19:02
