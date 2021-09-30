@@ -9,13 +9,23 @@ class MuebleModel
         $this->db = new PDO('mysql:host=localhost;' . 'dbname=mueble;charset=utf8', 'root', '');
     }
 
-    //$foo = getMuebles(); hace que en foo[0] tenga el 1er mueble, foo[1] el 2do, foo[2] el 3ro, etc...
+    //ambas funciones hacen exactamente lo mismo, pero consultan distintas tablas
+    
+    //$foo = getMuebles(); hace que en foo[0] tenga el 1er mueble, foo[1] el 2do, foo[2] el 3ro, etc... mismo para categorias
     function getMuebles()
     {
         $sentencia = $this->db->prepare("select * from mueble");
         $sentencia->execute();
         $muebles = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $muebles;
+    }
+    
+    function getCategorias()
+    {
+        $sentencia = $this->db->prepare("select * from categoria");
+        $sentencia->execute();
+        $categorias = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $categorias;
     }
 
     //lo mismo que traer todos los muebles, pero traigo uno solo por id
