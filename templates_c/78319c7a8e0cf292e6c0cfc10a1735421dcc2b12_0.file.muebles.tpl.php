@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-01 01:56:36
+/* Smarty version 3.1.39, created on 2021-10-01 21:51:27
   from 'C:\xampp\htdocs\projects\TPEWeb2\templates\muebles.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_61564eb4126385_46797405',
+  'unifunc' => 'content_615766bf04d061_78674053',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '78319c7a8e0cf292e6c0cfc10a1735421dcc2b12' => 
     array (
       0 => 'C:\\xampp\\htdocs\\projects\\TPEWeb2\\templates\\muebles.tpl',
-      1 => 1633045922,
+      1 => 1633117882,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_61564eb4126385_46797405 (Smarty_Internal_Template $_smarty_tpl) {
+function content_615766bf04d061_78674053 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -46,7 +46,7 @@ $_smarty_tpl->tpl_vars['mueble']->do_else = false;
             <tr>
                 <td><?php echo $_smarty_tpl->tpl_vars['mueble']->value->nombre;?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['mueble']->value->detalles;?>
+                <td><?php echo $_smarty_tpl->tpl_vars['mueble']->value->descripcion;?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['mueble']->value->precio;?>
 </td>

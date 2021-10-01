@@ -13,7 +13,7 @@
         {foreach from=$muebles item=mueble}
             <tr>
                 <td>{$mueble->nombre}</td>
-                <td>{$mueble->detalles}</td>
+                <td>{$mueble->descripcion}</td>
                 <td>{$mueble->precio}</td>
             </tr>
         {/foreach}

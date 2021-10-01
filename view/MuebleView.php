@@ -8,6 +8,7 @@ class MuebleView
     function __construct()
     {
         $this->smarty = new Smarty();
+        $this->smarty->assign('BASE_URL',BASE_URL);
     }
     //tabla de muebles general
     function showMuebles($muebles)
