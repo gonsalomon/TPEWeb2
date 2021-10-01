@@ -10,12 +10,12 @@
         </tr>
     </thead>
     <tbody>
-        {{foreach from=muebles item=mueble}
+        {foreach from=$muebles item=mueble}
             <tr>
                 <td>{$mueble->nombre}</td>
                 <td>{$mueble->detalles}</td>
                 <td>{$mueble->precio}</td>
             </tr>
-        {/foreach}}
+        {/foreach}
     </tbody>
 {include file="footer.tpl"}

@@ -3,7 +3,6 @@
 require_once "controller/MuebleController.php";
 //constante global de la URL de mi web
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
-define('home', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/getmuebles');
 //lee la acción
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
