@@ -8,9 +8,18 @@ class MuebleView
     function __construct()
     {
         $this->smarty = new Smarty();
+        $this->smarty->assign('BASE_URL',BASE_URL);
     }
     //tabla de muebles general
     function showMuebles($muebles)
+    {
+        $this->smarty->assign('titulo', 'Lista de muebles');
+        $this->smarty->assign('muebles', $muebles);
+        //renderizo
+        $this->smarty->display('templates/muebles.tpl');
+    }
+    //tabla de muebles appending categoría
+    function showMueblesCategoria($muebles)
     {
         $this->smarty->assign('titulo', 'Lista de muebles');
         $this->smarty->assign('muebles', $muebles);

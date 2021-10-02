@@ -16,7 +16,7 @@ $muebleController = new MuebleController();
 //decide qué camino tomar con un switch
 switch ($params[0]) {
     case 'home':
-        $muebleController->getMuebles();
+        $muebleController->getMueblesConCategoria();
         break;
         //ver otros CASEs y elaborar
 

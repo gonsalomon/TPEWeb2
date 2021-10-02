@@ -9,6 +9,12 @@ class MuebleModel
         $this->db = new PDO('mysql:host=localhost;' . 'dbname=mueble;charset=utf8', 'root', '');
     }
 
+    //meto connect acá porque es donde mejor se contextualiza
+    function connect()
+    {
+        return new PDO('mysql:host=localhost;' . 'dbname=mueble;charset=utf8', 'root', '');
+    }
+
     //$foo = getMuebles(); hace que en foo[0] tenga el 1er mueble, foo[1] el 2do, foo[2] el 3ro, etc...
     function getMuebles()
     {
@@ -18,20 +24,11 @@ class MuebleModel
         return $muebles;
     }
 
-    //lo mismo que traer todos los muebles, pero traigo uno solo por id
-    function getMueble($id_mueble)
-    {
-        $sentencia = $this->db->prepare("select * from mueble WHERE id_mueble=?");
-        $sentencia->execute(array($id_mueble));
-        $mueble = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $mueble;
-    }
-
     //subo un mueble a la BBDD
-    function insertMueble($nombre, $detalles, $precio)
+    function insertMueble($nombre, $descripcion, $precio, $categoria)
     {
-        $sentencia = $this->db->prepare("INSERT INTO mueble(nombre, detalles, precio) VALUES(?, ?, ?)");
-        $sentencia->execute(array($nombre, $detalles, $precio));
+        $sentencia = $this->db->prepare("INSERT INTO mueble(nombre, descripcion, precio, categoria) VALUES(?, ?, ?, ?)");
+        $sentencia->execute(array($nombre, $descripcion, $precio, $categoria));
     }
 
     //modifico un mueble
