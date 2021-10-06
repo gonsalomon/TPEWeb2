@@ -17,6 +17,7 @@ class MuebleController
     function getMuebles()
     {
         $muebles = $this->model->getMuebles();
+        // $this->view->showMuebles($muebles);
         return $muebles;
     }
 
@@ -34,9 +35,9 @@ class MuebleController
             $sentencia->execute(array($mueble->id_categoria));
             $categoria = $sentencia->fetch(PDO::FETCH_OBJ);
             $p['categoria']= $categoria->nombre;
+
             array_push($mueblesConDetalle, $p);
         }
-
         $this->view->showMueblesCategoria($mueblesConDetalle);
     }
 }

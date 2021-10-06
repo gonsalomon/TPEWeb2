@@ -10,15 +10,11 @@
         </tr>
     </thead>
     <tbody>
-        {foreach from=$muebles item=mueble}
+        {foreach from=$muebles  item=$mueble}
             <tr>
-                <td>{$mueble->nombre}</td>
-                <td>{$mueble->descripcion}</td>
-                <td>{$mueble->precio}</td>
-                <td>{if isset($mueble->id_categoria)}
-                        {$mueble->id_categoria}
-                    {/if}
-                </td>
+            {foreach from=$mueble item=$item}
+                <td>{$item}</td>
+            {/foreach}
             </tr>
         {/foreach}
     </tbody>
