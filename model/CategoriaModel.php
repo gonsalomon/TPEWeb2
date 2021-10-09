@@ -9,12 +9,22 @@ class CategoriaModel
         $this->db = new PDO('mysql:host=localhost;' . 'dbname=mueble;charset=utf8', 'root', '');
     }
 
-    function getCategorias()
+    function getCategorias($muebles)
     {
-        $sentencia = $this->db->prepare("select * from categoria");
-        $sentencia->execute();
-        $categorias = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $categorias;
+        $sentencia = $db->prepare("SELECT * FROM categoria WHERE id_categoria=?");
+        $mueblesConDetalle = array();
+        foreach($muebles as $mueble) {
+            $p['mueble'] = $mueble->nombre;
+            $p['descripcion'] = $mueble->descripcion;
+            $p['precio'] = $mueble->precio;
+            
+            $sentencia->execute(array($mueble->id_categoria));
+            $categoria = $sentencia->fetch(PDO::FETCH_OBJ);
+            $p['categoria']= $categoria->nombre;
+
+            array_push($mueblesConDetalle, $p);
+        }
+        return $mueblesConDetalle;
     }
 
     function insertCategoria($nombre, $descripcion)

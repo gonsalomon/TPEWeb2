@@ -14,9 +14,9 @@ class CategoriaController
     }
 
     //traigo todas las categorias
-    function getCategorias()
+    function getCategorias($sarasa)
     {
-        $categorias = $this->model->getCategorias();
+        $categorias = $this->model->getCategorias($sarasa);
         $this->view->showCategorias($categorias);
     }
 }

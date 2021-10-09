@@ -1,6 +1,7 @@
 {include file="header.tpl"}
 {include file="nav.tpl"}
 <table>
+    <h1 class="center">Categorias</h1>
     <thead>
         <tr>
             <th>Categoria</th>
@@ -8,10 +9,11 @@
         </tr>
     </thead>
     <tbody>
-        {foreach from=$categorias item=categoria}
+        {foreach from=$categorias item=$categoria}
             <tr>
-                <td>{$categoria->nombre}</td>
-                <td>{$categoria->descripcion}</td>
+                {foreach from=$categoria item=$item}
+                    <td>{$item}</td>
+                {/foreach}
             </tr>
         {/foreach}
     </tbody>
