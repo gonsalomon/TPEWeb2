@@ -24,6 +24,13 @@ class MuebleModel
         return $muebles;
     }
 
+    function getMueble($id) 
+    {
+        $sentencia = $this->db->prepare("SELECT * FROM mueble WHERE id_mueble=?");
+        $sentencia->execute(array($id));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
     //subo un mueble a la BBDD
     function insertMueble($nombre, $descripcion, $precio, $categoria)
     {

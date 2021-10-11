@@ -11,7 +11,7 @@ class CategoriaModel
 
     function getCategorias($muebles)
     {
-        $sentencia = $db->prepare("SELECT * FROM categoria WHERE id_categoria=?");
+        $sentencia = $this->db->prepare("SELECT * FROM categoria WHERE id_categoria=?");
         $mueblesConDetalle = array();
         foreach($muebles as $mueble) {
             $p['mueble'] = $mueble->nombre;
@@ -21,6 +21,7 @@ class CategoriaModel
             $sentencia->execute(array($mueble->id_categoria));
             $categoria = $sentencia->fetch(PDO::FETCH_OBJ);
             $p['categoria']= $categoria->nombre;
+            $p['id_mueble'] = $mueble->id_mueble;
 
             array_push($mueblesConDetalle, $p);
         }

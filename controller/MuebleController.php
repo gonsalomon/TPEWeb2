@@ -24,10 +24,16 @@ class MuebleController
         return $muebles;
     }
 
+    function getMueble($id)
+    {
+        $mueble = $this->model->getMueble($id);
+        $this->view->showMueble($mueble);
+    }
+
     //WIP llevando a MVC este método
     function getMueblesConCategoria() {
         $muebles = $this->getMuebles();
         $mueblesConDetalle = $this->categoriaController->getCategorias($muebles);
-        $this->view->showMueblesCategoria($mueblesConDetalle);
+        // $this->view->showMueblesCategoria($mueblesConDetalle); //esta linea no va, esta repetida en otro lado y se llama a un show() dos veces
     }
 }
