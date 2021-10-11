@@ -21,6 +21,7 @@ switch ($params[0]) {
         //ver otros CASEs y elaborar
     case 'ViewDetail':
         $muebleController->getMueble($params[1]);
+        break;
         //el default te manda al home
     default:
         echo ('404: Page not found.'); //mejorar

@@ -29,6 +29,7 @@ class MuebleView
     //un mueble solo
     function showMueble($mueble)
     {
+        $this->smarty->assign('titulo', $mueble[0]->nombre);
         $this->smarty->assign('mueble', $mueble);
         $this->smarty->display('templates/muebleDetail.tpl');
     }
