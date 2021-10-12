@@ -3,6 +3,16 @@
 <table>
     <a href="home" class="link">
         <-- </a>
+
+        <form>
+            <select name="Filter" id="filter">
+                <option value="-1">Todos</option>
+                <option value="6">Pieza</option>
+                <option value="5">Cocina</option>
+            </select>
+            <button type="button" id="btn-Filter">Filtrar</button>
+        </form>
+
             <h1 class="center row">Categorias</h1>
             <thead>
                 <tr>
@@ -12,7 +22,7 @@
                     <th>Categoria</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBody">
                 {foreach from=$categorias item=$categoria key=$key}
                     <tr>
                         <td>{$categorias[$key]['mueble']}</td>
@@ -23,4 +33,6 @@
                     </tr>
                 {/foreach}
             </tbody>
+            
+        <script src="./js/filter.js"></script>
 {include file="footer.tpl"}

@@ -1,17 +1,4 @@
-{include file="header.tpl"}
-{include file="nav.tpl"}
-<a href="home" class="link">
-    <-- </a>
-        <h1 class="center row">Categorias</h1>
-        <table>
-        <thead>
-            <tr>
-                <th>Mueble</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-            </tr>
-        </thead>
-        <tbody>
+<tbody>
             {foreach from=$categorias item=$categoria key=$key}
                 <tr>
                     <td>{$categorias[$key]->nombre}</td>
@@ -22,5 +9,3 @@
                 </tr>
             {/foreach}
         </tbody>
-        </table>
-{include file="footer.tpl"}

@@ -16,6 +16,7 @@
                     <td>{$mueble[0]->nombre}</td>
                     <td>{$mueble[0]->descripcion}</td>
                     <td>{$mueble[0]->precio}</td>
+                    <td>{$mueble[0]->categoria}</td>
                 </tr>
             </tbody>
 {include file="footer.tpl"}

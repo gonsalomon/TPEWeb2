@@ -13,6 +13,7 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 //instancio el controller
 $muebleController = new MuebleController();
+$categoriaController = new CategoriaController();
 //decide qué camino tomar con un switch
 switch ($params[0]) {
     case 'home':
@@ -20,6 +21,9 @@ switch ($params[0]) {
         break;
     case 'ViewDetail':
         $muebleController->getMueble($params[1]);
+        break;
+    case 'filter':
+        $categoriaController->getCategoria($params[1]);
         break;
     default:
         echo ('404: Page not found.');

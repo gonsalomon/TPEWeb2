@@ -21,8 +21,8 @@ class CategoriaView
     //una categoria sola
     function showCategoria($categoria)
     {
-        $this->smarty->assign('categoria', $categoria);
-        $this->smarty->display('templates/categoriaDetail.tpl');
+        $this->smarty->assign('categorias', $categoria);
+        $this->smarty->display('templates/categoriaTableBody.tpl');
     }
     //el home
     function showHomeLocation()

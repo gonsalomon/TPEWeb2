@@ -27,7 +27,15 @@ class MuebleModel
     {
         $sentencia = $this->db->prepare("SELECT * FROM mueble WHERE id_mueble=?");
         $sentencia->execute(array($id));
-        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        $mueble = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+        $sentencia2 = $this->db->prepare("SELECT * FROM categoria WHERE id_categoria=?");
+        $sentencia2->execute(array($mueble[0]->id_categoria));
+        $cat = $sentencia2->fetchAll(PDO::FETCH_OBJ);
+
+        $mueble[0]->categoria = $cat[0]->nombre;
+
+        return $mueble;
     }
 
     //subo un mueble a la BBDD

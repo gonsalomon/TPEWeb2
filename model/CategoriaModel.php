@@ -28,6 +28,15 @@ class CategoriaModel
         return $mueblesConDetalle;
     }
 
+    function getCategoria($idCategoria)
+    {
+        $sentencia = $this->db->prepare("SELECT * FROM mueble WHERE id_categoria=?");
+        $sentencia->execute(array($idCategoria));
+        $mueblesFiltrados = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        
+        return $mueblesFiltrados;
+    }
+
     function insertCategoria($nombre, $descripcion)
     {
         $sentencia = $this->db->prepare("INSERT INTO categoria(nombre, descripcion) VALUES(?, ?)");
