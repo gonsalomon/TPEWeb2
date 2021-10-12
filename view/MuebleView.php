@@ -18,7 +18,7 @@ class MuebleView
         //renderizo
         $this->smarty->display('templates/muebles.tpl');
     }
-    //tabla de muebles appending categoría
+    //tabla de muebles appending categoría, el append se hace en
     function showMueblesCategoria($muebles)
     {
         $this->smarty->assign('titulo', 'Lista de muebles');

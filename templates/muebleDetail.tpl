@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 {include file="nav.tpl"}
-<a href="home">
+<a href="home" class="link">
     <-- </a>
         <table>
             <thead>

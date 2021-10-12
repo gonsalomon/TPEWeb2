@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 {include file="nav.tpl"}
 <table>
-    <a href="home">
+    <a href="home" class="link">
         <-- </a>
             <h1 class="center row">Categorias</h1>
             <thead>
@@ -19,7 +19,7 @@
                         <td>{$categorias[$key]['descripcion']}</td>
                         <td>{$categorias[$key]['precio']}</td>
                         <td>{$categorias[$key]['categoria']}</td>
-                        <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}">Ver</a></td>
+                        <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}" class="link">Ver</a></td>
                     </tr>
                 {/foreach}
             </tbody>

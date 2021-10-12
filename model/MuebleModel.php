@@ -15,7 +15,6 @@ class MuebleModel
         return new PDO('mysql:host=localhost;' . 'dbname=mueble;charset=utf8', 'root', '');
     }
 
-    //$foo = getMuebles(); hace que en foo[0] tenga el 1er mueble, foo[1] el 2do, foo[2] el 3ro, etc...
     function getMuebles()
     {
         $sentencia = $this->db->prepare("select * from mueble");
