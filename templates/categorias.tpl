@@ -15,9 +15,6 @@
             <tbody>
                 {foreach from=$categorias item=$categoria key=$key}
                     <tr>
-                        {* {foreach from=$categoria item=$item}
-        <td>{$item}</td>
-    {/foreach} *}
                         <td>{$categorias[$key]['mueble']}</td>
                         <td>{$categorias[$key]['descripcion']}</td>
                         <td>{$categorias[$key]['precio']}</td>
