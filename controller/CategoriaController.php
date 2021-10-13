@@ -17,7 +17,8 @@ class CategoriaController
     function getCategorias($muebles)
     {
         $categorias = $this->model->getCategorias($muebles);
-        $this->view->showCategorias($categorias);
+        $listaCat = $this->model->getCategoriasList();
+        $this->view->showCategorias($categorias, $listaCat);
     }
 
     function getCategoria($idCategoria)

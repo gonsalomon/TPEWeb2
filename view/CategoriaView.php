@@ -11,10 +11,11 @@ class CategoriaView
         $this->smarty->assign('BASE_URL',BASE_URL);
     }
     //tabla de categorias general
-    function showCategorias($categorias)
+    function showCategorias($categorias, $listaCat)
     {
         $this->smarty->assign('titulo', 'Lista de categorias');
         $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('listaCat', $listaCat);
         //renderizo
         $this->smarty->display('templates/categorias.tpl');
     }

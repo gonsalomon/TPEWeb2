@@ -2,12 +2,13 @@
 {include file="nav.tpl"}
 <table>
     <form>
+        <button type="button" id="btn-Filter">Filtrar por Categoria</button>
         <select name="Filter" id="filter">
             <option value="-1">Todos</option>
-            <option value="6">Pieza</option>
-            <option value="5">Cocina</option>
+                {foreach from=$listaCat item=$cat key=$key}
+                    <option value="{$cat->id_categoria}">{$cat->nombre}</option>
+                {/foreach}
         </select>
-        <button type="button" id="btn-Filter">Filtrar</button>
     </form>
 
     <h1 class="center row">Categorias</h1>
