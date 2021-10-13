@@ -2,7 +2,6 @@
 
 class CategoriaModel
 {
-
     private $db;
     function __construct()
     {

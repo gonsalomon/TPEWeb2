@@ -2,6 +2,7 @@
 require_once "./model/MuebleModel.php";
 require_once "./view/MuebleView.php";
 require_once "./controller/CategoriaController.php";
+require_once "./controller/AuthController.php";
 
 class MuebleController
 {
@@ -10,11 +11,14 @@ class MuebleController
 
     private $categoriaController;
 
+    private $auth;
+
     function __construct()
     {
         $this->model = new MuebleModel();
         $this->view = new MuebleView();
         $this->categoriaController = new CategoriaController();
+        $this->auth = new AuthController();
     }
 
     //traigo todos los muebles

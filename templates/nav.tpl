@@ -1,15 +1,11 @@
-<nav class="row">
-    <div class="link">Sobre nosotros</div>
-    <div class="link">Categorías</div>
-    <div class="link">Contactanos</div>
-    <div>
-        <div>
-            <input type="text" placeholder="Usuario">
-            <button>Login</button>
-        </div>
-        <div>
-            <input type="text" placeholder="Contraseña">
-            <button>Register</button>
-        </div>
+<nav class="loginBox">
+    <div class="row">
+        <input type="text" placeholder="Mail" id="mail">
+        <button><a class="link" href="login">Login</a></button>
     </div>
+    <div class="row">
+        <input type="text" placeholder="Contraseña" id="pass">
+        <button><a class="link" href="register">Register</a></button>
+    </div>
+    <a href="home" class="link"> Home </a>
 </nav>

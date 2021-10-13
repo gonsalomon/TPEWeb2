@@ -5,8 +5,7 @@ document.getElementById('btn-Filter').addEventListener('click', getData);
 async function getData() {
     let filtro = document.getElementById('filter').value;
 
-    if (filtro == "-1")
-    {
+    if (filtro == "-1") {
         location.href = 'home';
         return;
     }
@@ -19,9 +18,9 @@ async function getData() {
 
 }
 
-function vaciarTabla(){
+function vaciarTabla() {
     let tabla = document.getElementById("tableBody");
-    while(tabla.hasChildNodes()){
+    while (tabla.hasChildNodes()) {
         tabla.removeChild(tabla.lastChild);
     }
 }
