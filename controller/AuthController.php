@@ -33,14 +33,28 @@ class AuthController
         }
     }
 
-    function checkLoggedIn ()
-    {
-        session_start();
-        if(!isset($_SESSION['ID_USER']))
-        {
-            header('Location: home');
+    function verificarLogin(){
+        $user = $_POST["userID"];
+        $pass = $_POST["passID"];
+        $userFromDB = $this->model->getUser($user);
+        if(isset($userFromDB)){
+            if (password_verify($pass, $userFromDB[0]["pass"])){
+                session_start();
+                $_SESSION["user"] = $user;
+                //$_SESSION["admin"] = $userFromDB[0]["admin"];
+                //$_SESSION["id_usuario"] = $userFromDB[0]["id_usuario"];
+                header("Location:".homeadmin);
+            }else{
+              $this->view->mostrarLogin("Contraseña incorrecta");
+            }
         }else{
-            return true;
+          $this->view->mostrarLogin("No existe el usuario");
         }
+  
+    }
+
+    function register($user, $pass)
+    {
+        $this->model->addUser($user, $pass);
     }
 }

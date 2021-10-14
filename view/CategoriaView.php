@@ -13,11 +13,18 @@ class CategoriaView
     //tabla de categorias general
     function showCategorias($categorias, $listaCat)
     {
-        $this->smarty->assign('titulo', 'Lista de categorias');
-        $this->smarty->assign('categorias', $categorias);
-        $this->smarty->assign('listaCat', $listaCat);
-        //renderizo
-        $this->smarty->display('templates/categorias.tpl');
+        session_start();
+        if (isset($_SESSION["user"]))
+        {
+
+        }
+        else
+        {
+            $this->smarty->assign('titulo', 'Lista de categorias');
+            $this->smarty->assign('categorias', $categorias);
+            $this->smarty->assign('listaCat', $listaCat);
+            $this->smarty->display('templates/categorias.tpl'); 
+        }
     }
     //una categoria sola
     function showCategoria($categoria)
