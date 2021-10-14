@@ -9,7 +9,7 @@ class MuebleController
     private $model;
     private $view;
 
-    private $categoriaController;
+    private $categoria;
 
     private $auth;
 
@@ -17,7 +17,7 @@ class MuebleController
     {
         $this->model = new MuebleModel();
         $this->view = new MuebleView();
-        $this->categoriaController = new CategoriaController();
+        $this->categoria = new CategoriaController();
         $this->auth = new AuthController();
     }
 
@@ -34,8 +34,8 @@ class MuebleController
         $this->view->showMueble($mueble);
     }
 
-    function getMueblesConCategoria() {
+    function getMueblesConCategoria() {              
         $muebles = $this->getMuebles();
-        $mueblesConDetalle = $this->categoriaController->getCategorias($muebles);
+        $this->categoria->getCategorias($muebles);
     }
 }
