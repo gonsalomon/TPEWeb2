@@ -24,9 +24,10 @@ switch ($params[0]) {
         //acá iría la línea que carga todas las categorías
         break;
     case 'login':
-        $muebleController->getMueblesConCategoria();
+        // $muebleController->getMueblesConCategoria();
+        $authController->verificarLogin();
         //$authController->login();
-        if($authController->checkLoggedIn())
+        // if($authController->checkLoggedIn())
             //sudoGetMueblesConCategoria
         break;
     case 'register':

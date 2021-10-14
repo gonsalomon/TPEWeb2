@@ -20,7 +20,7 @@ class AuthController
 
     function login ($username,$password)
     {
-        $user = $this->model->seekUser($username);
+        $user = $this->model->getUser($username);
 
         // encontró un user con el username que mandó, y tiene la misma contraseña
         if (!empty($user) && password_verify($password, $user->password)) {
@@ -36,25 +36,39 @@ class AuthController
     function verificarLogin(){
         $user = $_POST["userID"];
         $pass = $_POST["passID"];
+
         $userFromDB = $this->model->getUser($user);
-        if(isset($userFromDB)){
-            if (password_verify($pass, $userFromDB[0]["pass"])){
+        if($userFromDB){
+            if (password_verify($pass, $userFromDB->pass)){
                 session_start();
                 $_SESSION["user"] = $user;
                 //$_SESSION["admin"] = $userFromDB[0]["admin"];
                 //$_SESSION["id_usuario"] = $userFromDB[0]["id_usuario"];
-                header("Location:".homeadmin);
+                header("Location: home");
             }else{
-              $this->view->mostrarLogin("Contraseña incorrecta");
+              echo "Contraseña incorrecta";
             }
         }else{
-          $this->view->mostrarLogin("No existe el usuario");
+          echo "Usuario incorrecto";
         }
   
     }
 
-    function register($user, $pass)
+    function register()
     {
-        $this->model->addUser($user, $pass);
+        if((!empty($_POST['userID'])) && (!empty($_POST['passID'])))
+        {
+            $user = $_POST['userID'];
+            $pass = $_POST['passID'];
+            $userFromDB = $this->model->getUser($user);
+            if($userFromDB==null){
+               $hash = password_hash($pass, PASSWORD_BCRYPT);
+               $this->model->addUser($user, $hash);
+            }else{
+              echo "Usuario ya existente";
+            }
+         }else{
+           echo "Llenar todos los campos";
+         }
     }
 }
