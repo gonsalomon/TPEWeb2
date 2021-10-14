@@ -20,29 +20,26 @@ $authController = new AuthController();
 
 switch ($params[0]) {
     case 'home':
-        $muebleController->getMueblesConCategoria();
-        //acá iría la línea que carga todas las categorías
-        break;
-    case 'login':
-        // $muebleController->getMueblesConCategoria();
-        $authController->verificarLogin();
-        //$authController->login();
-        // if($authController->checkLoggedIn())
-            //sudoGetMueblesConCategoria
-        break;
-    case 'register':
-        $authController->register();
-        break;
     case 'admin':
-        //acá va el tpl empowered con permisos de admin (el sudoGetMueblesConCategoría)
+        $muebleController->getMueblesConCategoria();
         break;
-    //falta agregar casos, son 3 tablas: todas las categorías (sin muebles), todos los muebles de todas las categorías (ya está), todos los muebles de una categoría (ya está), ViewDetail
-    //acá nos falta la primera, el filter resuelve la 2da y la 3ra (puede mostrar todos los muebles en la bbdd)
+    case 'auth':
+        $authController->auth();
+        break;
     case 'ViewDetail':
         $muebleController->getMueble($params[1]);
         break;
     case 'filter':
         $categoriaController->getCategoria($params[1]);
+        break;
+    case 'addMueble':
+        $muebleController->addMueble($params[1]);
+        break;
+    case 'editMueble':
+        $muebleController->editMueble($params[1]);
+        break;
+    case 'delMueble':
+        $muebleController->delMueble($params[1]);
         break;
     default:
         echo ('404: Page not found.');

@@ -13,62 +13,70 @@ class AuthController
         $this->view = new AuthView();
     }
 
+    //IMPORTANTE no tocar esto, funciona perfecto, armado con el ayudante
     function showLogin()
     {
         $this->view->showLogin();
     }
 
-    function login ($username,$password)
+    function auth ()
     {
-        $user = $this->model->getUser($username);
-
-        // encontró un user con el username que mandó, y tiene la misma contraseña
-        if (!empty($user) && password_verify($password, $user->password)) {
+        $user = $_POST['userID'];
+        $pass = $_POST['passID'];
+        
+        if(isset($_POST['register']))
+        {
+            $userDB = $this->register($user,$pass);
+        }
+        else
+        {
+            $userDB = $this->model->getUser($user);
+            if($userDB)
+            {
+                if (!password_verify($pass, $userDB->pass))
+                {
+                    $userDB = null;
+                }
+            }
+        }
+        if($userDB)
+        {
             session_start();
-            $_SESSION['ID_USER'] = $user->id;
-            $_SESSION['USERNAME'] = $user->username;
+            $_SESSION['ID_USER'] = $userDB->id;
+            $_SESSION['USERNAME'] = $userDB->mail;
             header('Location: admin');
         } else {
             $this->view->showLogin("Login incorrecto");
         }
     }
-
-    function verificarLogin(){
-        $user = $_POST["userID"];
-        $pass = $_POST["passID"];
-
-        $userFromDB = $this->model->getUser($user);
-        if($userFromDB){
-            if (password_verify($pass, $userFromDB->pass)){
-                session_start();
-                $_SESSION["user"] = $user;
-                //$_SESSION["admin"] = $userFromDB[0]["admin"];
-                //$_SESSION["id_usuario"] = $userFromDB[0]["id_usuario"];
-                header("Location: home");
-            }else{
-              echo "Contraseña incorrecta";
-            }
-        }else{
-          echo "Usuario incorrecto";
-        }
-  
-    }
-
-    function register()
+    //esto tampoco
+    function register($user,$pass)
     {
-        if((!empty($_POST['userID'])) && (!empty($_POST['passID'])))
+        if((!empty($user)) && (!empty($pass)))
         {
-            $user = $_POST['userID'];
-            $pass = $_POST['passID'];
-            $userFromDB = $this->model->getUser($user);
-            if($userFromDB==null){
-               $hash = password_hash($pass, PASSWORD_BCRYPT);
-               $this->model->addUser($user, $hash);
+            $userDB = $this->model->getUser($user);
+            if($userDB==null){
+                $hash = password_hash($pass, PASSWORD_BCRYPT);
+                $this->model->addUser($user, $hash);
+                return $this->model->getUser($user);
             }else{
               echo "Usuario ya existente";
             }
          }else{
            echo "Llenar todos los campos";
          }
+    }
+
+    function checkLoggedIn(){
+        session_start();
+        if (isset($_SESSION['USERNAME']))
+        {
+            header('Location: admin');
+        }
+        else
+        {
+            header('Location: home');
+        }
+        return true;
     }
 }

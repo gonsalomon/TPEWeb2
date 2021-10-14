@@ -15,12 +15,14 @@ async function getData() {
     let respuesta = await response.text();
     vaciarTabla();
     document.getElementById('tableBody').innerHTML = respuesta;
-
 }
 
 function vaciarTabla() {
-    let tabla = document.getElementById("tableBody");
+    /*let tabla = document.getElementById("tableBody");
     while (tabla.hasChildNodes()) {
         tabla.removeChild(tabla.lastChild);
-    }
+    }*/
+
+    let tabla = document.querySelector("#tableBody");
+    tabla.innerHTML = "";
 }
