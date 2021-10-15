@@ -17,10 +17,9 @@
             <td>{$mueble[0]->precio}</td>
             <td>{$mueble[0]->categoria}</td>
         </tr>
-        {debug}
         {if $admin}
             <tr>
-                <form method="POST" action="editMueble">
+                <form method="POST" action="editMueble/{$mueble[0]->id_mueble}">
                     <td><input type="text" name="furn" placeholder="Mueble"></td>
                     <td><input type="text" name="desc" placeholder="Descripción"></td>
                     <td><input type="text" name="price" placeholder="Precio"></td>
@@ -29,7 +28,7 @@
                                 <option value="{$cat->id_categoria}">{$cat->nombre}</option>
                             {/foreach}
                         </select></td>
-                    <td><input type="submit" value="Add"></td>
+                    <td><input type="submit" value="Edit"></td>
                 </form>
             </tr>
         {/if}

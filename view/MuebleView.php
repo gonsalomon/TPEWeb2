@@ -31,6 +31,7 @@ class MuebleView
     {
         $this->smarty->assign('titulo', $mueble[0]->nombre);
         $this->smarty->assign('mueble', $mueble);
+        session_start();
         if (!empty($_SESSION["USERNAME"])/*&&isset($listaCat)*/){
             $this->smarty->assign('user', $_SESSION["USERNAME"]);
             $this->smarty->assign('listaCat',$listaCat);

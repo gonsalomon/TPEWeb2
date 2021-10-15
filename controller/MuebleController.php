@@ -48,7 +48,7 @@ class MuebleController
 
     function editMueble($id){
         $this->model->updateMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat'], $id);
-        header('Location: home');
+        header('Location:' . BASE_URL . 'home');
     }
 
     function delMueble($id){
