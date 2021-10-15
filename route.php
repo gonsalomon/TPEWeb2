@@ -27,13 +27,13 @@ switch ($params[0]) {
         $authController->auth();
         break;
     case 'ViewDetail':
-        $muebleController->getMueble($params[1]);
+        $muebleController->getMueble($params[1], null);
         break;
     case 'filter':
         $categoriaController->getCategoria($params[1]);
         break;
     case 'addMueble':
-        $muebleController->addMueble($params[1]);
+        $muebleController->addMueble();
         break;
     case 'editMueble':
         $muebleController->editMueble($params[1]);
