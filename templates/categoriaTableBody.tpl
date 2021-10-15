@@ -14,11 +14,13 @@
         {/foreach}
         {if $admin}
             <tr>
-                <td><input type="text" name="furn" placeholder="Mueble"></td>
-                <td><input type="text" name="desc" placeholder="Descripción"></td>
-                <td><input type="text" name="price" placeholder="Precio"></td>
-                <td><input type="text" name="cat" placeholder="Categoría"></td>
-                <td><a href="addMueble/{$categorias[$key]['id_mueble']}">Add</a></td>
+                <form method="POST" action="addMueble">
+                    <td><input type="text" name="furn" placeholder="Mueble"></td>
+                    <td><input type="text" name="desc" placeholder="Descripción"></td>
+                    <td><input type="text" name="price" placeholder="Precio"></td>
+                    <td><input type="text" name="cat" placeholder="Categoría"></td>
+                    <td><input type="submit" value="Add"></td>
+                </form>
             </tr>
         {/if}
-    </tbody>
+</tbody>
