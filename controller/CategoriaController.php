@@ -27,4 +27,10 @@ class CategoriaController
         $this->view->showCategoria($muebles);
         return $muebles;
     }
+
+    function viewAllCats()
+    {
+        $cats = $this->model->getCategoriasList();
+        $this->view->showCatsList($cats);
+    }
 }

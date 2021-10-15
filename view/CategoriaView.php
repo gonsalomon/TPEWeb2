@@ -64,4 +64,28 @@ class CategoriaView
     {
         header("Location: " . BASE_URL . "home");
     }
+
+    function showCatsList($cats)
+    {
+        if (!isset($_SESSION["USERNAME"]))
+        {
+            session_start();
+        }
+        if (!empty($_SESSION["USERNAME"]))
+        {
+            $this->smarty->assign('titulo', 'Lista de categorías');
+            $this->smarty->assign('admin',true);
+            $this->smarty->assign('user',$_SESSION['USERNAME']);
+            $this->smarty->assign('cats', $cats);
+            $this->smarty->display('templates/categoriaAllCats.tpl');
+        }
+        else
+        {
+            $this->smarty->assign('titulo', 'Lista de categorias');
+            $this->smarty->assign('admin',false);
+            $this->smarty->assign('user',$_SESSION['USERNAME']);
+            $this->smarty->assign('cats', $cats);
+            $this->smarty->display('templates/categoriaAllCats.tpl');
+        }
+    }
 }

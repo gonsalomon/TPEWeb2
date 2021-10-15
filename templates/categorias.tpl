@@ -12,6 +12,7 @@
     </form>
 
     <h1 class="center row">Categorias</h1>
+    <a href="viewAllCats">Ver Categorias Cargadas</a>
     <thead>
         <tr>
             <th>Mueble</th>

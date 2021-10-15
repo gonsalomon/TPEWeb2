@@ -44,6 +44,9 @@ switch ($params[0]) {
     case 'logout':
         $authController->logout();
         break;
+    case 'viewAllCats':
+        $categoriaController->viewAllCats();
+        break;
     default:
         echo ('404: Page not found.');
         break;
