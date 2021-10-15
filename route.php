@@ -32,6 +32,15 @@ switch ($params[0]) {
     case 'filter':
         $categoriaController->getCategoria($params[1]);
         break;
+    case 'addMueble':
+        $muebleController->addMueble($params[1]);
+        break;
+    case 'editMueble':
+        $muebleController->editMueble($params[1]);
+        break;
+    case 'delMueble':
+        $muebleController->delMueble($params[1]);
+        break;
     default:
         echo ('404: Page not found.');
         break;
