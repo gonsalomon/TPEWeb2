@@ -6,9 +6,9 @@
             <td>{$categorias[$key]['precio']}</td>
             <td>{$categorias[$key]['categoria']}</td>
             {if $admin}
-                <td><a href="addMueble/{}"></a></td>
-                <td><a href="editMueble/{$categorias[$key]['id_mueble']}"></a></td>
-                <td><a href="delMueble/{$categorias[$key]['id_mueble']}"></a></td>
+                <td><a href="addMueble"></a></td>
+                <td><a href="editMueble"></a></td>
+                <td><a href="delMueble"></a></td>
             {/if}
             <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}" class="link">Ver</a></td>
         </tr>

@@ -37,19 +37,28 @@ class CategoriaView
         }
     }
     //una categoria sola
-    function showCategoria($categoria){
-        if (!isset($_SESSION["USERNAME"])){
+    function showCategoria($categoria)
+    {
+        if (!isset($_SESSION["USERNAME"]))
+        {
             session_start();
         }
-        $this->smarty->assign('titulo', 'Lista de categorías');
-        if (!empty($_SESSION["USERNAME"])){            
+        if (!empty($_SESSION["USERNAME"]))
+        {
+            $this->smarty->assign('titulo', 'Lista de categorías');
             $this->smarty->assign('admin',true);
-            $this->smarty->assign('user',$_SESSION['USERNAME']);            
-        }else{
-            $this->smarty->assign('admin',false);
+            $this->smarty->assign('user',$_SESSION['USERNAME']);
+            $this->smarty->assign('categorias', $categoria);
+            $this->smarty->display('templates/categoriaTableBody.tpl');
         }
-        $this->smarty->assign('categorias', $categoria);
-        $this->smarty->display('templates/categoriaTableBody.tpl');
+        else
+        {
+            $this->smarty->assign('titulo', 'Lista de categorias');
+            $this->smarty->assign('admin',false);
+            $this->smarty->assign('user',$_SESSION['USERNAME']);
+            $this->smarty->assign('categorias', $categoria);
+            $this->smarty->display('templates/categoriaTableBody.tpl'); 
+        }
     }
     //el home
     function showHomeLocation()
