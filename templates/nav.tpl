@@ -14,9 +14,13 @@
             <input type="submit" name="register" value="Register">
         </form>
     {/if}
+    <div class="row">
     {if isset($user)}
-        <h2>Bienvenido, {$user}!</h2>
-        <a href="logout">Logout</a>
+        <h1>Bienvenido, {$user}!</h1>
+    </div>
+    <div class="row">
+        <h4><a href="logout" class="link">Logout</a></h4>
     {/if}
-    <a href="home">Back</a>
+    <h4><a href="home" class="link">Back</a></h4>
+    </div>
 </nav>

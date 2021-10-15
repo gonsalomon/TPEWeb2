@@ -12,7 +12,7 @@
     </form>
 
     <h1 class="center row">Categorias</h1>
-    <a href="viewAllCats">Ver Categorias Cargadas</a>
+    <h3><a href="viewAllCats" class="link">Ver Categorias Cargadas</a></h3>
     <thead>
         <tr>
             <th>Mueble</th>
@@ -33,8 +33,8 @@
                 <td>{$categorias[$key]['precio']}</td>
                 <td>{$categorias[$key]['categoria']}</td>
                 {if $admin}
-                    <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}">Edit</a></td>
-                    <td><a href="delMueble/{$categorias[$key]['id_mueble']}">Delete</a></td>
+                    <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}" class="link">Edit</a></td>
+                    <td><a href="delMueble/{$categorias[$key]['id_mueble']}" class="link">Delete</a></td>
                 {/if}
                 <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}" class="link">Ver</a></td>
             </tr>
