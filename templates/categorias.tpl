@@ -44,7 +44,7 @@
                 <td><input type="text" name="desc" placeholder="Descripción"></td>
                 <td><input type="text" name="price" placeholder="Precio"></td>
                 <td><input type="text" name="cat" placeholder="Categoría"></td>
-                    <td><a href="addMueble/{$categorias[$key]['id_mueble']}">Add</a></td>
+                <td><a href="addMueble/{$categorias[$key]['id_mueble']}">Add</a></td>
             </tr>
         {/if}
     </tbody>
