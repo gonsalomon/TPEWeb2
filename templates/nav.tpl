@@ -1,6 +1,6 @@
 <nav>
     {*<h1>{$title}</h1>*}
-    {if !$admin}
+    {if ! isset($admin)}
         <form method="POST" action="auth" id="form">
             <div>
                 <label>Usuario</label>
@@ -15,8 +15,8 @@
             <input type="submit" name="register" value="Register">
         </form>
     {/if}
-    {if $admin}
-        <a>Bienvenido, {$user}!</a>
+    {if isset($user)}
+        <h2>Bienvenido, {$user}!</h2>
         {*control de logout*}
     {/if}
 
