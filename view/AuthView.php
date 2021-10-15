@@ -11,8 +11,8 @@ class AuthView
         $this->smarty->assign('BASE_URL',BASE_URL);
     }
 
-    function showLogin() {
+    /*function showLogin() {
         $this->smarty->assign('titulo', 'Iniciar Sesión');
         $this->smarty->display('templates/login.tpl');
-    }
+    }*/
 }

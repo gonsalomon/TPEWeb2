@@ -6,17 +6,13 @@ class AuthController
 {
     private $model;
     private $view;
+    private $categoria;
 
     function __construct()
     {
         $this->model = new AuthModel();
         $this->view = new AuthView();
-    }
-
-    //IMPORTANTE no tocar esto, funciona perfecto, armado con el ayudante
-    function showLogin()
-    {
-        $this->view->showLogin();
+        $this->categoria = new CategoriaView();
     }
 
     function auth ()
@@ -67,16 +63,9 @@ class AuthController
          }
     }
 
-    function checkLoggedIn(){
+    function logout(){
         session_start();
-        if (isset($_SESSION['USERNAME']))
-        {
-            header('Location: admin');
-        }
-        else
-        {
-            header('Location: home');
-        }
-        return true;
+        session_destroy();
+        header('Location: home');
     }
 }

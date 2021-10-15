@@ -41,6 +41,9 @@ switch ($params[0]) {
     case 'delMueble':
         $muebleController->delMueble($params[1]);
         break;
+    case 'logout':
+        $authController->logout();
+        break;
     default:
         echo ('404: Page not found.');
         break;
