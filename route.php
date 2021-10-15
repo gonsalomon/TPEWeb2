@@ -26,9 +26,6 @@ switch ($params[0]) {
     case 'auth':
         $authController->auth();
         break;
-    case 'logout':
-        $authController->logout();
-        break;
     case 'ViewDetail':
         $muebleController->getMueble($params[1]);
         break;

@@ -38,17 +38,4 @@ class MuebleController
         $muebles = $this->getMuebles();
         $this->categoria->getCategorias($muebles);
     }
-    
-    function addMueble(){
-        
-    }
-
-    function editMueble(){
-
-    }
-
-    function delMueble($id_mueble){
-        $this->model->deleteMueble($id_mueble);
-        $this->getMueblesConCategoria();
-    }
 }
