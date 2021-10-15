@@ -1,4 +1,3 @@
-{debug}
 <nav>
     <h1>{$titulo}</h1>
     {if !$admin}
