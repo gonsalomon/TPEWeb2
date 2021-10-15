@@ -41,8 +41,6 @@ class AuthController
             $_SESSION['ID_USER'] = $userDB->id;
             $_SESSION['USERNAME'] = $userDB->mail;
             header('Location: admin');
-        } else {
-            $this->view->showLogin("Login incorrecto");
         }
     }
     //esto tampoco
