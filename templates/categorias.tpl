@@ -32,7 +32,7 @@
                 <td>{$categorias[$key]['precio']}</td>
                 <td>{$categorias[$key]['categoria']}</td>
                 {if $admin}
-                    <td><a href="editMueble/{$categorias[$key]['id_mueble']}">Edit</a></td>
+                    <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}">Edit</a></td>
                     <td><a href="delMueble/{$categorias[$key]['id_mueble']}">Delete</a></td>
                 {/if}
                 <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}" class="link">Ver</a></td>
@@ -44,7 +44,11 @@
                     <td><input type="text" name="furn" placeholder="Mueble"></td>
                     <td><input type="text" name="desc" placeholder="Descripción"></td>
                     <td><input type="text" name="price" placeholder="Precio"></td>
-                    <td><input type="text" name="cat" placeholder="Categoría"></td>
+                    <td><select name="cat">
+                            {foreach from=$listaCat item=$cat}
+                                <option value="{$cat->id_categoria}">{$cat->nombre}</option>
+                            {/foreach}
+                        </select></td>
                     <td><input type="submit" value="Add"></td>
                 </form>
             </tr>
