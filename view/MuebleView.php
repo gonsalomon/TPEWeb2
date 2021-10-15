@@ -31,6 +31,12 @@ class MuebleView
     {
         $this->smarty->assign('titulo', $mueble[0]->nombre);
         $this->smarty->assign('mueble', $mueble);
+        if (!empty($_SESSION["USERNAME"])){
+            $this->smarty->assign('user', $_SESSION["USERNAME"]);
+            $this->smarty->assign('admin',true);
+        }else{
+            $this->smarty->assign('admin',false);
+        }
         $this->smarty->display('templates/muebleDetail.tpl');
     }
     //el home
