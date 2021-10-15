@@ -27,12 +27,13 @@ class MuebleView
         $this->smarty->display('templates/muebles.tpl');
     }
     //un mueble solo
-    function showMueble($mueble)
+    function showMueble($mueble, $listaCat)
     {
         $this->smarty->assign('titulo', $mueble[0]->nombre);
         $this->smarty->assign('mueble', $mueble);
-        if (!empty($_SESSION["USERNAME"])){
+        if (!empty($_SESSION["USERNAME"])/*&&isset($listaCat)*/){
             $this->smarty->assign('user', $_SESSION["USERNAME"]);
+            $this->smarty->assign('listaCat',$listaCat);
             $this->smarty->assign('admin',true);
         }else{
             $this->smarty->assign('admin',false);

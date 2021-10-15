@@ -41,15 +41,15 @@ class MuebleModel
     //subo un mueble a la BBDD
     function insertMueble($nombre, $descripcion, $precio, $categoria)
     {
-        $sentencia = $this->db->prepare("INSERT INTO mueble(nombre, descripcion, precio, categoria) VALUES(?, ?, ?, ?)");
+        $sentencia = $this->db->prepare("INSERT INTO mueble(nombre, descripcion, precio, id_categoria) VALUES(?, ?, ?, ?)");
         $sentencia->execute(array($nombre, $descripcion, $precio, $categoria));
     }
 
     //modifico un mueble
-    function updateMueble($nombre, $detalles, $precio, $id_mueble)
+    function updateMueble($nombre, $detalles, $precio, $id_categoria, $id_mueble)
     {
-        $sentencia = $this->db->prepare("UPDATE mueble SET nombre = ?, detalles = ?, precio = ? WHERE id_mueble=?");
-        $sentencia->execute(array($id_mueble));
+        $sentencia = $this->db->prepare("UPDATE mueble SET nombre = ?, descripcion = ?, precio = ?, id_categoria=? WHERE id_mueble=?");
+        $sentencia->execute(array($nombre, $detalles, $precio, $id_categoria, $id_mueble));
     }
 
     //borro un mueble
