@@ -15,28 +15,22 @@ class AuthController
         $this->categoria = new CategoriaView();
     }
 
-    function auth ()
+    function auth()
     {
         $user = $_POST['userID'];
         $pass = $_POST['passID'];
-        
-        if(isset($_POST['register']))
-        {
-            $userDB = $this->register($user,$pass);
-        }
-        else
-        {
+
+        if (isset($_POST['register'])) {
+            $userDB = $this->register($user, $pass);
+        } else {
             $userDB = $this->model->getUser($user);
-            if($userDB)
-            {
-                if (!password_verify($pass, $userDB->pass))
-                {
+            if ($userDB) {
+                if (!password_verify($pass, $userDB->pass)) {
                     $userDB = null;
                 }
             }
         }
-        if($userDB)
-        {
+        if ($userDB) {
             session_start();
             $_SESSION['ID_USER'] = $userDB->id;
             $_SESSION['USERNAME'] = $userDB->mail;
@@ -44,26 +38,28 @@ class AuthController
         }
     }
     //esto tampoco
-    function register($user,$pass)
+    function register($user, $pass)
     {
-        if((!empty($user)) && (!empty($pass)))
-        {
+        if ((!empty($user)) && (!empty($pass))) {
             $userDB = $this->model->getUser($user);
-            if($userDB==null){
+            if ($userDB == null) {
                 $hash = password_hash($pass, PASSWORD_BCRYPT);
                 $this->model->addUser($user, $hash);
                 return $this->model->getUser($user);
-            }else{
-              echo "Usuario ya existente";
+            } else {
+                echo "Usuario ya existente";
             }
-         }else{
-           echo "Llenar todos los campos";
-         }
+        } else {
+            echo "Llenar todos los campos";
+        }
     }
 
-    function logout(){
+    function logout()
+    {
         session_start();
-        session_destroy();
-        header('Location: home');
+        if (isset($_SESSION['ID_USER'])) {
+            session_destroy();
+            header('Location: home');
+        }
     }
 }
