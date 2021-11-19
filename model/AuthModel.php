@@ -12,7 +12,6 @@ class AuthModel
     {
         $sentencia = $this->db->prepare("INSERT INTO users(mail, pass, is_admin) VALUES(?, ?, ?)");
         $sentencia->execute(array($user, $pass, false));
-        echo "Usuario registrado correctamente";
         header("Location: home");
     }
 
