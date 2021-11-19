@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="head.tpl"}
 {include file="nav.tpl"}
 <table>
     <thead>
@@ -12,9 +12,9 @@
     <tbody>
         {foreach from=$muebles  item=$mueble}
             <tr>
-            {foreach from=$mueble item=$item}
-                <td>{$item}</td>
-            {/foreach}
+                {foreach from=$mueble item=$item}
+                    <td>{$item}</td>
+                {/foreach}
             </tr>
         {/foreach}
     </tbody>

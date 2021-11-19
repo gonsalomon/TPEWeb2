@@ -34,8 +34,19 @@ class AuthController
             session_start();
             $_SESSION['ID_USER'] = $userDB->id;
             $_SESSION['USERNAME'] = $userDB->mail;
-            header('Location: admin');
+            if ($userDB->admin == true) {
+                $_SESSION['ADMIN'] = true;
+            } else {
+                $_SESSION['ADMIN'] = false;
+            }
+            header('Location: home');
         }
+    }
+
+    function getAllUsers()
+    {
+        $users = $this->model->getUsers();
+        $this->view->showUsers($users);
     }
     //esto tampoco
     function register($user, $pass)

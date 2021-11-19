@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="head.tpl"}
 {include file="nav.tpl"}
 <h1>Detalles</h1>
 <table>

@@ -29,6 +29,9 @@ switch ($params[0]) {
     case 'ViewDetail':
         $muebleController->getMueble($params[1], null);
         break;
+    case 'editUsers':
+        $authController->getAllUsers();
+        break;
     case 'filter':
         $categoriaController->getCategoria($params[1]);
         break;
