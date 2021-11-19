@@ -36,23 +36,27 @@ class MuebleController
         $this->view->showMueble($mueble, $listaCat);
     }
 
-    function getMueblesConCategoria() {              
+    function getMueblesConCategoria()
+    {
         $muebles = $this->getMuebles();
         $this->catCont->getCategorias($muebles);
     }
 
-    function addMueble(){
+    function addMueble()
+    {
         $this->model->insertMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat']);
-        header('Location: home');
+        header('Location:' . BASE_URL . 'home');
     }
 
-    function editMueble($id){
+    function editMueble($id)
+    {
         $this->model->updateMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat'], $id);
         header('Location:' . BASE_URL . 'home');
     }
 
-    function delMueble($id){
+    function delMueble($id)
+    {
         $this->model->deleteMueble($id);
-        header('Location: home');
+        header('Location:' . BASE_URL . 'home');
     }
 }

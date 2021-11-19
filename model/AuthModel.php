@@ -29,4 +29,12 @@ class AuthModel
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
+
+    function delUser($id)
+    {
+        $sentencia = $this->db->prepare("DELETE FROM users WHERE id=?");
+        $sentencia->execute(array($id));
+        echo "Usuario eliminado correctamente";
+        header("Location: home");
+    }
 }

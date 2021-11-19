@@ -1,7 +1,6 @@
 {include file="head.tpl"}
 {include file="nav.tpl"}
-{debug}
-{if $admin}
+{if isset($admin)}
     <h1>Editar usuarios</h1>
     <p>Un admin puede dar permisos de administrador a otro usuario, o borrar a otro usuario.</p>
     <table>
@@ -18,7 +17,7 @@
                     <td>{$user->mail}</td>
                     <td><input type="checkbox" {if $user->is_admin}checked{/if}></td>
                     <td>
-                        <button><a class="link" href="deleteUser">Borrar</a></button>
+                        <button><a class="link" href="delUser/{$user->id}">Borrar</a></button>
                     </td>
                 </tr>
             {/foreach}

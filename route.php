@@ -44,6 +44,9 @@ switch ($params[0]) {
     case 'delMueble':
         $muebleController->delMueble($params[1]);
         break;
+    case 'delUser':
+        $authController->delUser($params[1]);
+        break;
     case 'logout':
         $authController->logout();
         break;

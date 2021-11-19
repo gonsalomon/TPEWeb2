@@ -11,11 +11,6 @@ class AuthView
         $this->smarty->assign('BASE_URL', BASE_URL);
     }
 
-    /*function showLogin() {
-        $this->smarty->assign('titulo', 'Iniciar Sesión');
-        $this->smarty->display('templates/login.tpl');
-    }*/
-
     function showUsers($users)
     {
         if (!isset($_SESSION["USERNAME"])) {
@@ -27,9 +22,7 @@ class AuthView
             $this->smarty->assign('titulo', 'Lista de usuarios');
             $this->smarty->assign('users', $users);
             $this->smarty->display('templates/usersTable.tpl');
-        }
-        else
-        {
+        } else {
             $this->smarty->assign('titulo', 'Lista de usuarios');
             $this->smarty->assign('users', $users);
             $this->smarty->display('templates/usersTable.tpl');

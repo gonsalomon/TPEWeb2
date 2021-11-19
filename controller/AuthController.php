@@ -31,14 +31,16 @@ class AuthController
             }
         }
         if ($userDB) {
-            session_start();
-            $_SESSION['ID_USER'] = $userDB->id;
-            $_SESSION['USERNAME'] = $userDB->mail;
+            if (password_verify($pass, $userDB->pass)) {
+                session_start();
+                $_SESSION['ID_USER'] = $userDB->id;
+                $_SESSION['USERNAME'] = $userDB->mail;
 
-            if ($userDB->admin == 1) {
-                $_SESSION['ADMIN'] = true;
-            } else {
-                $_SESSION['ADMIN'] = false;
+                if ($userDB->is_admin) {
+                    $_SESSION['ADMIN'] = true;
+                } else {
+                    $_SESSION['ADMIN'] = false;
+                }
             }
             header('Location: home');
         }
@@ -65,6 +67,12 @@ class AuthController
         } else {
             echo "Llenar todos los campos";
         }
+    }
+
+    function delUser($id)
+    {
+        $this->model->delUser($id);
+        header('Location:' . BASE_URL . 'editUsers');
     }
 
     function logout()
