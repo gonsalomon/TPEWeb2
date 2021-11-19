@@ -19,7 +19,7 @@
             <h1>Bienvenido, {$user}!</h1>
         </div>
         <div class="row">
-            {if isset($admin)}
+            {if $admin}
                 <h4><a href="editUsers" class="link row">Editar usuarios</a></h4>
             {/if}
             <h4 class="row"><a href="logout" class="link">Logout</a></h4>

@@ -34,7 +34,8 @@ class AuthController
             session_start();
             $_SESSION['ID_USER'] = $userDB->id;
             $_SESSION['USERNAME'] = $userDB->mail;
-            if ($userDB->admin == true) {
+
+            if ($userDB->admin == 1) {
                 $_SESSION['ADMIN'] = true;
             } else {
                 $_SESSION['ADMIN'] = false;
@@ -48,6 +49,7 @@ class AuthController
         $users = $this->model->getUsers();
         $this->view->showUsers($users);
     }
+
     //esto tampoco
     function register($user, $pass)
     {
