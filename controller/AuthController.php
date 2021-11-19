@@ -21,13 +21,23 @@ class AuthController
         $pass = $_POST['passID'];
 
         if (isset($_POST['register'])) {
+
             $userDB = $this->register($user, $pass);
+            
         } else {
+
             $userDB = $this->model->getUser($user);
+
             if ($userDB) {
                 if (!password_verify($pass, $userDB->pass)) {
                     $userDB = null;
                 }
+                else {
+                    echo "Contraseña incorrecta.";
+                }
+            }
+            else {
+                echo "Usuario no encontrado";
             }
         }
         if ($userDB) {
