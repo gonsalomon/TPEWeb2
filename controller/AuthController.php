@@ -77,8 +77,34 @@ class AuthController
 
     function delUser($id)
     {
-        $this->model->delUser($id);
-        header('Location:' . BASE_URL . 'editUsers');
+        session_start();
+        if (isset($_SESSION['ADMIN']))
+        {
+            if ($_SESSION['ADMIN'])
+            {
+                $this->model->delUser($id);
+                header('Location:' . BASE_URL . 'editUsers');
+            }
+        }
+        else{
+            echo "Access denied";
+        }
+    }
+
+    function toggleAdmin($id)
+    {
+        session_start();
+        if (isset($_SESSION['ADMIN']))
+        {
+            if ($_SESSION['ADMIN'])
+            {
+                $this->model->toggleAdmin($id);
+                header('Location:' . BASE_URL . 'editUsers');
+            }
+        }
+        else{
+            echo "Access denied";
+        }
     }
 
     function logout()

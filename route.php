@@ -47,6 +47,9 @@ switch ($params[0]) {
     case 'delUser':
         $authController->delUser($params[1]);
         break;
+    case 'toggleAdmin':
+        $authController->toggleAdmin($params[1]);
+        break;
     case 'logout':
         $authController->logout();
         break;

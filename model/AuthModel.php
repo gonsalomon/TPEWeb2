@@ -36,4 +36,19 @@ class AuthModel
         echo "Usuario eliminado correctamente";
         header("Location: home");
     }
+
+    function getUserById($id) 
+    {
+        $sentencia = $this->db->prepare("SELECT * FROM users WHERE id = ?");
+        $sentencia->execute(array($id));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
+
+    function toggleAdmin($id)
+    {
+        session_start();
+        $newValue = !$this->getUserById($id)->is_admin;
+        $sentencia = $this->db->prepare("UPDATE users SET is_admin = ? WHERE id = ?");
+        $sentencia->execute(array($newValue, $id));
+    }
 }
