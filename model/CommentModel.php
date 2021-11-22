@@ -21,8 +21,6 @@ class CommentModel
         $sentencia->execute(array($idCategoria));
         $comment = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
-        $asd = $this->getComments($comment);
-
-        return $asd;
+        return $comment;
     }
 }
