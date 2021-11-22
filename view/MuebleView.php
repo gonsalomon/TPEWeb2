@@ -35,9 +35,10 @@ class MuebleView
         if (!empty($_SESSION["USERNAME"])/*&&isset($listaCat)*/){
             $this->smarty->assign('user', $_SESSION["USERNAME"]);
             $this->smarty->assign('listaCat',$listaCat);
-            $this->smarty->assign('admin',true);
+            $this->smarty->assign('admin',$_SESSION["ADMIN"]);
         }else{
             $this->smarty->assign('admin',false);
+            $this->smarty->assign('user',false);
         }
         $this->smarty->display('templates/muebleDetail.tpl');
     }

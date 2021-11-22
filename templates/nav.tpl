@@ -1,5 +1,4 @@
 <nav>
-    <h1>{$titulo}</h1>
     {if !$user}
         <form method="POST" action="auth" id="form">
             <div>
@@ -26,4 +25,5 @@
         {/if}
         <h4><a href="home" class="link">Back</a></h4>
     </div>
+    <h1>{$titulo}</h1>
 </nav>

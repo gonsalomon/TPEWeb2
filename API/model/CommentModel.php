@@ -10,15 +10,15 @@ class CommentModel
 
     function getComments()
     {
-        $sentencia = $this->db->prepare("SELECT * FROM categorias");
+        $sentencia = $this->db->prepare("SELECT * FROM comments");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getComment($idCategoria)
+    function getComment($id)
     {
-        $sentencia = $this->db->prepare("SELECT * FROM mueble WHERE id_categoria=?");
-        $sentencia->execute(array($idCategoria));
+        $sentencia = $this->db->prepare("SELECT * FROM comments WHERE id=?");
+        $sentencia->execute(array($id));
         $comment = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
         return $comment;

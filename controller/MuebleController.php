@@ -4,6 +4,7 @@ require_once "./view/MuebleView.php";
 require_once "./controller/CategoriaController.php";
 require_once "./model/CategoriaModel.php";
 require_once "./controller/AuthController.php";
+require_once "./API/CommentController.php";
 
 class MuebleController
 {

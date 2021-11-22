@@ -34,4 +34,7 @@
         {/if}
     </tbody>
 </table>
+
+<div id="commentsContainer"></div>
+<script src="js/comments.js"></script>
 {include file="footer.tpl"}

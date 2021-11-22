@@ -13,8 +13,8 @@ class CommentView
 
     public function response($comments, $status)
     {
-        header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));
         header("Content-Type: application/json");
+        header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));
         echo json_encode($comments);
     }
 
