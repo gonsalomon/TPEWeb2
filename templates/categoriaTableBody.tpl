@@ -1,15 +1,15 @@
 <tbody id="tableBody">
-        {foreach from=$categorias item=$categoria key=$key}
+        {foreach from=$categorias item=categoria}
             <tr>
-                <td>{$categorias[$key]['mueble']}</td>
-                <td>{$categorias[$key]['descripcion']}</td>
-                <td>{$categorias[$key]['precio']}</td>
-                <td>{$categorias[$key]['categoria']}</td>
-                {if isset($admin)}
-                    <td><a href="editMueble/{$categorias[$key]['id_mueble']}">Edit</a></td>
-                    <td><a href="delMueble/{$categorias[$key]['id_mueble']}">Delete</a></td>
+                <td>{$categoria->nombre}</td>
+                <td>{$categoria->descripcion}</td>
+                <td>{$categoria->precio}</td>
+                <td>{$categoria->nombre_categoria}</td>
+                {if $admin}
+                    <td><a href="ViewDetail/{$categoria->id_mueble}" class="link">Edit</a></td>
+                    <td><a href="delMueble/{$categoria->id_mueble}" class="link">Delete</a></td>
                 {/if}
-                <td><a href="ViewDetail/{$categorias[$key]['id_mueble']}" class="link">Ver</a></td>
+                <td><a href="ViewDetail/{$categoria->id_mueble}" class="link">Ver</a></td>
             </tr>
         {/foreach}
         {if $admin}

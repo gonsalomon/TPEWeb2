@@ -22,13 +22,13 @@ $authController = new UserController();
 switch ($params[0]) {
     case 'home':
     case 'admin':
-        $muebleController->getMueblesConCategoria();
+        $categoriaController->getMueblesConCategorias();
         break;
     case 'auth':
         $authController->auth();
         break;
     case 'ViewDetail':
-        $muebleController->getMueble($params[1], null);
+        $muebleController->getMueble($params[1]);
         // $cc->getComments(null);
         break;
     case 'editUsers':
@@ -57,6 +57,12 @@ switch ($params[0]) {
         break;
     case 'viewAllCats':
         $categoriaController->viewAllCats();
+        break;
+    case 'addCategoria':
+        $categoriaController->addCategoria();
+        break;
+    case 'delCategoria':
+        $categoriaController->delCategoria($params[1]);
         break;
     default:
         echo ('404: Page not found.');

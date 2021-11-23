@@ -14,11 +14,11 @@ class CategoriaController
     }
 
     //traigo todas las categorias
-    function getCategorias($muebles)
+    function getMueblesConCategorias()
     {
-        $categorias = $this->model->getCategorias($muebles);
-        $listaCat = $this->model->getCategoriasList();
-        $this->view->showCategorias($categorias, $listaCat);
+        $mueblesConCategorias = $this->model->getMueblesConCategorias();
+        $listaCategorias = $this->model->getCategoriasList();
+        $this->view->showCategorias($mueblesConCategorias, $listaCategorias);
     }
 
     function getCategoria($idCategoria)
@@ -31,5 +31,23 @@ class CategoriaController
     {
         $cats = $this->model->getCategoriasList();
         $this->view->showCatsList($cats);
+    }
+
+    function addCategoria()
+    {
+        $this->model->addCategoria($_POST['categoria'], $_POST['descripcion']);
+        header('Location:' . BASE_URL . 'viewAllCats');
+    }
+
+    function delCategoria($id)
+    {
+        $this->model->delCategoria($id);
+        header('Location:' . BASE_URL . 'viewAllCats');
+    }
+
+    function editCategoria($id)
+    {
+        $this->model->editCategoria($_POST['categoria'], $_POST['descripcion'], $id);
+        header('Location:' . BASE_URL . 'viewAllCats');
     }
 }

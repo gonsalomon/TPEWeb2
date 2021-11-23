@@ -4,11 +4,12 @@ document.getElementById('btn-Filter').addEventListener('click', getData);
 
 async function getData() {
     let filtro = document.getElementById('filter').value;
-
-    if (filtro == "-1") {
-        location.href = 'home';
-        return;
-    }
+    console.log(filtro);
+    // if (filtro == "-1") {
+    //     // location.href = 'home';
+    //     // return;
+    //     // filtro = null;
+    // }
     let url = `filter/${filtro}`;
 
     let response = await fetch(url);

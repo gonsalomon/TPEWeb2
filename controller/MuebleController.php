@@ -37,12 +37,6 @@ class MuebleController
         $this->view->showMueble($mueble, $listaCat);
     }
 
-    function getMueblesConCategoria()
-    {
-        $muebles = $this->getMuebles();
-        $this->catCont->getCategorias($muebles);
-    }
-
     function addMueble()
     {
         $this->model->insertMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat']);
