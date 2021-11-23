@@ -1,18 +1,16 @@
 <?php
-require_once './view/AuthView.php';
-require_once './model/AuthModel.php';
+require_once './view/UserView.php';
+require_once './model/UserModel.php';
 
-class AuthController
+class UserController
 {
     private $model;
     private $view;
-    private $categoria;
 
     function __construct()
     {
         $this->model = new AuthModel();
         $this->view = new AuthView();
-        $this->categoria = new CategoriaView();
     }
 
     function auth()

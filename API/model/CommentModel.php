@@ -24,11 +24,11 @@ class CommentModel
         return $comment;
     }
 
-    public function addComment($a, $b, $c, $d)
+    public function addComment($text, $muebleId, $userMail, $puntaje)
     {
         
         $sentencia = $this->db->prepare("INSERT INTO comments(comment, mueble_id, user_mail, puntaje) VALUES(?, ?, ?, ?)");
-        $sentencia->execute(array($a, $b, $c, $d));
+        $sentencia->execute(array($text, $muebleId, $userMail, $puntaje));
     }
 
     public function delComment($id)

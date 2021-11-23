@@ -35,3 +35,8 @@ h1 {
 #userMail, #muebleId, #isAdmin{
     visibility: hidden;
 }
+
+.comment {
+    margin-top: 1%;
+    border-top: solid black 1px;
+}

@@ -3,7 +3,7 @@ require_once "./model/MuebleModel.php";
 require_once "./view/MuebleView.php";
 require_once "./controller/CategoriaController.php";
 require_once "./model/CategoriaModel.php";
-require_once "./controller/AuthController.php";
+require_once "./controller/UserController.php";
 require_once "./API/CommentController.php";
 
 class MuebleController
@@ -20,7 +20,7 @@ class MuebleController
         $this->view = new MuebleView();
         $this->catCont = new CategoriaController();
         $this->catModel = new CategoriaModel();
-        $this->auth = new AuthController();
+        $this->auth = new UserController();
     }
 
     //traigo todos los muebles

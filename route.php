@@ -1,7 +1,7 @@
 <?php
 require_once "controller/MuebleController.php";
 require_once "controller/CategoriaController.php";
-require_once "controller/AuthController.php";
+require_once "controller/UserController.php";
 // require_once "API/CommentController.php";
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -16,7 +16,7 @@ $params = explode('/', $action);
 
 $muebleController = new MuebleController();
 $categoriaController = new CategoriaController();
-$authController = new AuthController();
+$authController = new UserController();
 // $cc = new CommentController();
 
 switch ($params[0]) {
