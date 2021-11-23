@@ -31,3 +31,7 @@ h1 {
 .slider.round:before {
     border-radius: 50%;
 }
+
+#userMail, #muebleId, #isAdmin{
+    visibility: hidden;
+}

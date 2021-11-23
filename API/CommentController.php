@@ -1,17 +1,17 @@
 <?php
 
 require_once 'model/CommentModel.php';
-require_once 'view/CommentView.php';
+require_once 'view/ApiView.php';
+require_once 'ApiController.php';
 
-class CommentController
+class CommentController extends ApiController
 {
-    private $model;
-    private $view;
 
     public function __construct()
     {
+        parent::__construct();
         $this->model = new CommentModel;
-        $this->view = new CommentView;
+        // $this->model->editComment(29, "Hello!", 4);
     }
 
     public function getComments($params = [])
@@ -20,13 +20,72 @@ class CommentController
             $comments = $this->model->getComments();
             $this->view->response($comments, 200);
         } else {
-            $comment = $this->model->getComment($params[":ID"]);
+            $comment = $this->model->getComments($params[":ID"]);
             $this->view->response($comment, 200);
         }
     }
 
-    public function test()
+    public function addComment($params = [])
     {
-        echo "hi";
+        $data = $this->getInfo();
+        $text = $data->comment;
+        $muebleId = $data->mueble_id;
+        $userMail = $data->user_mail;
+        $puntaje = $data->puntaje;
+
+        if ($puntaje > 5)
+        {
+            $puntaje = 5;
+        }
+
+        session_start();
+        if ($_SESSION['USERNAME'])
+        {
+            $newComment = $this->model->addComment($text, $muebleId, $_SESSION['USERNAME'], $puntaje);
+            $this->view->response($newComment, 200);
+        }
+    }
+
+    public function delComment($params = [])
+    {
+        $id = $params[":ID"];
+        session_start();
+        $comentario = $this->model->getComment($id);
+        if ($_SESSION['ADMIN'] && $comentario)
+        {
+            $this->model->delComment($id);
+            $this->view->response("Comment deleted", 200);
+        }
+        else 
+        {
+            $this->view->response("Access denied", 405);
+        }
+    }
+
+    public function editComment($params = [])
+    {
+        $id = $params[":ID"];
+        $data = $this->getInfo();
+        $text = $data->comment;
+        $puntaje = $data->puntaje;
+
+        session_start();
+
+        $comentario = $this->model->getComment($id);
+        
+        if ($comentario)
+        {
+            if ($_SESSION['USERNAME'] == $comentario->user_mail)
+            {
+                $uComment = $this->model->editComment($id, $text, $puntaje);
+                $this->view->response($uComment, 200);
+            }
+            else {
+                $this->view->response("Access denied", 405);
+            }
+        }
+        else {
+            $this->view->response("Element does not exist", 404);
+        }
     }
 }

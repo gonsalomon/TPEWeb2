@@ -1,14 +1,14 @@
 <?php
 require_once './lib/smarty-3.1.39/libs/Smarty.class.php';
 
-class CommentView
+class ApiView
 {
     private $smarty;
     //constructor
     function __construct()
     {
         $this->smarty = new Smarty();
-        $this->smarty->assign('BASE_URL', BASE_URL);
+        // $this->smarty->assign('BASE_URL', BASE_URL);
     }
 
     public function response($comments, $status)
