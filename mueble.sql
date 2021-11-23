@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2021 at 04:50 AM
+-- Generation Time: Nov 23, 2021 at 04:53 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -44,6 +44,29 @@ INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `mueble_id` int(11) NOT NULL,
+  `user_mail` varchar(50) NOT NULL,
+  `puntaje` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `comment`, `mueble_id`, `user_mail`, `puntaje`) VALUES
+(10, 'Hello world, first comment!', 1, 'asd', 5),
+(29, 'Hello!', 1, 'asd', 3),
+(30, 'hello haha', 1, 'asd', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mueble`
 --
 
@@ -76,19 +99,19 @@ INSERT INTO `mueble` (`id_mueble`, `nombre`, `descripcion`, `precio`, `id_catego
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `pass` varchar(255) NOT NULL
+  `pass` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `mail`, `pass`) VALUES
-(1, 'admin1', '$2y$10$194ozgMXVLTpewyskXNvru6SDdiV3thmNKJHxH/oTbxwF2GeN/.IC'),
-(2, 'admin1', '1234'),
-(3, 'admin', '$2y$10$BW9WBeq6R0SXuji/i.CwDeorAMgEMWBvacjoX4aVNw18edPxQOs.6'),
-(4, 'admin3', '$2y$10$ljJNH.7.BcnjW6HVnWADCuJ3UyDdHfJVnHwC6aiPN818IVbOJZDNi'),
-(5, 'asd', '$2y$10$N0CGLfoF7xzgSJe88k6unOtob62a9xSvUi5KIAe9.Gme1Zv17zmSa');
+INSERT INTO `users` (`id`, `mail`, `pass`, `is_admin`) VALUES
+(4, 'admin3', '$2y$10$ljJNH.7.BcnjW6HVnWADCuJ3UyDdHfJVnHwC6aiPN818IVbOJZDNi', 0),
+(5, 'asd', '$2y$10$N0CGLfoF7xzgSJe88k6unOtob62a9xSvUi5KIAe9.Gme1Zv17zmSa', 1),
+(6, 'test1', '$2y$10$weyJXzdNpOjzKea4R4F51./ZE0tjljemvxnbUXsOAkCmpciohhvfm', 0),
+(7, 'matias', '$2y$10$CmWhdzV32kKf4S7BwooGUO7wif0j9bgGDgkuOdEGnJ0KQt5iRd04K', 0);
 
 --
 -- Indexes for dumped tables
@@ -101,6 +124,14 @@ ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mueble_id` (`mueble_id`),
+  ADD KEY `user_mail` (`user_mail`);
+
+--
 -- Indexes for table `mueble`
 --
 ALTER TABLE `mueble`
@@ -111,7 +142,8 @@ ALTER TABLE `mueble`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mail` (`mail`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -124,6 +156,12 @@ ALTER TABLE `categoria`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
 -- AUTO_INCREMENT for table `mueble`
 --
 ALTER TABLE `mueble`
@@ -133,11 +171,18 @@ ALTER TABLE `mueble`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `mueble_id` FOREIGN KEY (`mueble_id`) REFERENCES `mueble` (`id_mueble`),
+  ADD CONSTRAINT `user_mail` FOREIGN KEY (`user_mail`) REFERENCES `users` (`mail`);
 
 --
 -- Constraints for table `mueble`
