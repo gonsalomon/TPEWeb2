@@ -16,11 +16,21 @@ class CommentController extends ApiController
 
     public function getComments($params = [])
     {
-        if (empty($params)) {
-            $comments = $this->model->getComments();
-            $this->view->response($comments, 200);
-        } else {
+        $id = $params[":ID"];
+        if ($id) 
+        {
             $comment = $this->model->getComments($params[":ID"]);
+            $this->view->response($comment, 200);
+        }
+
+    }
+
+    public function getComment($params = [])
+    {
+        $id = $params[":ID"];
+        if ($id) 
+        {
+            $comment = $this->model->getComment($id);
             $this->view->response($comment, 200);
         }
     }
@@ -42,7 +52,10 @@ class CommentController extends ApiController
         if ($_SESSION['USERNAME'])
         {
             $newComment = $this->model->addComment($text, $muebleId, $_SESSION['USERNAME'], $puntaje);
-            $this->view->response($newComment, 200);
+            if ($newComment)
+            {
+                $this->view->response($newComment, 200);
+            }
         }
     }
 

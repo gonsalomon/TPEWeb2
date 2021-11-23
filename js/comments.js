@@ -6,9 +6,10 @@ let url = "api/comments";
 async function loadComments(postId) {
   let data;
   let admin = document.getElementById("isAdmin");
-  let c = await fetch(`${url}/${postId}`);
+  let c = await fetch(`${url}/all/${postId}`);
   data = await c.json();
   // document.getElementById('commentsContainer').innerHTML = data;
+  console.log(data);
 
   for (let i = 0; i < data.length; i++) {
     document.getElementById(
@@ -54,17 +55,14 @@ function sendComment() {
       if (!response.ok) {
         console.log("Error");
       }
+      else {
+        document.getElementById("commentsContainer").innerHTML = "";
+        loadComments(muebleId);
+        document.getElementById('comment').value = "";
+      }
       return response.json();
     })
-    .catch((error) => console.log(error));
-    
-    document.getElementById(
-        "commentsContainer"
-      ).innerHTML += `<div class="comment">
-        <h3>${userMail} valoró: ${puntaje}/5</h3>
-        <p>${text}</p>`;
-
-    document.getElementById("commentsContainer").innerHTML += `</div>`;
+    .catch((error) => console.log(error));   
 }
 
 function deleteComment(id) {
@@ -113,10 +111,11 @@ function updateComment(id) {
         if (!response.ok) {
           console.log("Error");
         }
-      })
-      .catch((error) => console.log(error));
-      
-      document.getElementById(`comment${id}`).innerHTML = `
+        else {
+            document.getElementById(`comment${id}`).innerHTML = `
           <h3>${userMail} valoró: ${puntaje}/5</h3>
           <p>${text}</p>`;
+        }
+      })
+      .catch((error) => console.log(error));
   }
