@@ -51,6 +51,8 @@
     <input id="sendComment" type="button" value="Enviar comentario">
     <input id="muebleId" value="{$mueble[0]->id_mueble}">
 </form>
+{else}
+<p>Puedes logearte para dejar comentarios</p>
 {/if}
 
 <div id="commentsContainer"></div>

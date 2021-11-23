@@ -25,7 +25,6 @@ class CategoriaController
     {
         $muebles = $this->model->getCategoria($idCategoria);
         $this->view->showCategoria($muebles);
-        return $muebles;
     }
 
     function viewAllCats()

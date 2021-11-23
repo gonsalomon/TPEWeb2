@@ -33,8 +33,6 @@ class AuthModel
     {
         $sentencia = $this->db->prepare("DELETE FROM users WHERE id=?");
         $sentencia->execute(array($id));
-        echo "Usuario eliminado correctamente";
-        header("Location: home");
     }
 
     function getUserById($id) 
