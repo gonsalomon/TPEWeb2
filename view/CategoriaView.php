@@ -22,14 +22,14 @@ class CategoriaView
             $this->smarty->assign('user', $_SESSION['USERNAME']);
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('listaCat', $listaCat);
-            $this->smarty->display('templates/categorias.tpl');
+            $this->smarty->display('templates/home.tpl');
         } else {
             $this->smarty->assign('titulo', 'Lista de categorias');
             $this->smarty->assign('admin', false);
             $this->smarty->assign('user', false);
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('listaCat', $listaCat);
-            $this->smarty->display('templates/categorias.tpl');
+            $this->smarty->display('templates/home.tpl');
         }
     }
     //una categoria sola

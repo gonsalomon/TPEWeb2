@@ -44,7 +44,6 @@ class AuthModel
 
     function toggleAdmin($id)
     {
-        session_start();
         $newValue = !$this->getUserById($id)->is_admin;
         $sentencia = $this->db->prepare("UPDATE users SET is_admin = ? WHERE id = ?");
         $sentencia->execute(array($newValue, $id));
