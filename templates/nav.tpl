@@ -1,4 +1,5 @@
 <nav>
+<p>Hola profe, una cuenta de admin: user: asd, pass: asd</p>
     {if !$user}
         <form method="POST" action="auth" id="form">
             <div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2021 at 04:53 AM
+-- Generation Time: Nov 24, 2021 at 03:20 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -39,7 +39,8 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
 (5, 'Muebles cocina', 'Son muebles que están normalmente en una cocina'),
-(6, 'Muebles pieza', 'Son muebles que están normalmente en una pieza');
+(6, 'Muebles pieza', 'Son muebles que están normalmente en una pieza'),
+(9, 'Muebles baño', 'Son muebles que están normalmente en un baño');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`id`, `comment`, `mueble_id`, `user_mail`, `puntaje`) VALUES
 (10, 'Hello world, first comment!', 1, 'asd', 5),
 (29, 'Hello!', 1, 'asd', 3),
-(30, 'hello haha', 1, 'asd', 2);
+(39, 'hello haha', 1, 'asd', 2),
+(40, 'Hiiiiii', 1, 'asd', 4);
 
 -- --------------------------------------------------------
 
@@ -153,13 +155,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `mueble`
