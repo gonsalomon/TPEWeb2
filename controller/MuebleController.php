@@ -5,8 +5,9 @@ require_once "./controller/CategoriaController.php";
 require_once "./model/CategoriaModel.php";
 require_once "./controller/UserController.php";
 require_once "./API/CommentController.php";
+require_once "Controller.php";
 
-class MuebleController
+class MuebleController extends Controller
 {
     private $model;
     private $view;
@@ -39,19 +40,28 @@ class MuebleController
 
     function addMueble()
     {
-        $this->model->insertMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat']);
-        header('Location:' . BASE_URL . 'home');
+        if ($this->checkAdmin())
+        {
+            $this->model->insertMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat']);
+            header('Location:' . BASE_URL . 'home');
+        }
     }
 
     function editMueble($id)
     {
-        $this->model->updateMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat'], $id);
-        header('Location:' . BASE_URL . 'home');
+        if ($this->checkAdmin())
+        {
+            $this->model->updateMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat'], $id);
+            header('Location:' . BASE_URL . 'home');
+        }
     }
 
     function delMueble($id)
     {
-        $this->model->deleteMueble($id);
-        header('Location:' . BASE_URL . 'home');
+        if ($this->checkAdmin())
+        {
+            $this->model->deleteMueble($id);
+            header('Location:' . BASE_URL . 'home');
+        }
     }
 }

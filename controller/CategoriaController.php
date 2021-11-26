@@ -1,8 +1,9 @@
 <?php
 require_once "./model/CategoriaModel.php";
 require_once "./view/CategoriaView.php";
+require_once "Controller.php";
 
-class CategoriaController
+class CategoriaController extends Controller
 {
     private $model;
     private $view;
@@ -35,19 +36,28 @@ class CategoriaController
 
     function addCategoria()
     {
-        $this->model->addCategoria($_POST['categoria'], $_POST['descripcion']);
-        header('Location:' . BASE_URL . 'viewAllCats');
+        if ($this->checkAdmin())
+        {
+            $this->model->addCategoria($_POST['categoria'], $_POST['descripcion']);
+            header('Location:' . BASE_URL . 'viewAllCats');
+        }
     }
 
     function delCategoria($id)
     {
-        $this->model->delCategoria($id);
-        header('Location:' . BASE_URL . 'viewAllCats');
+        if ($this->checkAdmin())
+        {
+            $this->model->delCategoria($id);
+            header('Location:' . BASE_URL . 'viewAllCats');
+        }
     }
 
     function editCategoria($id)
     {
-        $this->model->editCategoria($_POST['categoria'], $_POST['descripcion'], $id);
-        header('Location:' . BASE_URL . 'viewAllCats');
+        if ($this->checkAdmin())
+        {
+            $this->model->editCategoria($_POST['categoria'], $_POST['descripcion'], $id);
+            header('Location:' . BASE_URL . 'viewAllCats');
+        }
     }
 }

@@ -1,8 +1,9 @@
 <?php
 require_once './view/UserView.php';
 require_once './model/UserModel.php';
+require_once "Controller.php";
 
-class UserController
+class UserController extends Controller
 {
     private $model;
     private $view;
@@ -76,32 +77,20 @@ class UserController
     function delUser($id)
     {
         session_start();
-        if (isset($_SESSION['ADMIN']))
+        if ($this->checkAdmin())
         {
-            if ($_SESSION['ADMIN'])
-            {
-                $this->model->delUser($id);
-                header('Location:' . BASE_URL . 'editUsers');
-            }
-        }
-        else{
-            echo "Access denied";
+            $this->model->delUser($id);
+            header('Location:' . BASE_URL . 'editUsers');
         }
     }
 
     function toggleAdmin($id)
     {
         session_start();
-        if (isset($_SESSION['ADMIN']))
+        if ($this->checkAdmin())
         {
-            if ($_SESSION['ADMIN'])
-            {
-                $this->model->toggleAdmin($id);
-                header('Location:' . BASE_URL . 'editUsers');
-            }
-        }
-        else{
-            echo "Access denied";
+            $this->model->toggleAdmin($id);
+            header('Location:' . BASE_URL . 'editUsers');
         }
     }
 

@@ -3,14 +3,18 @@
 require_once 'model/CommentModel.php';
 require_once 'view/ApiView.php';
 require_once 'ApiController.php';
+require_once './helpers/AuthHelper.php';
+require_once './helpers/AuthHelper.php';
 
 class CommentController extends ApiController
 {
+    private $auth;
 
     public function __construct()
     {
         parent::__construct();
         $this->model = new CommentModel;
+        $this->auth = new AuthHelper;
         // $this->model->editComment(29, "Hello!", 4);
     }
 
@@ -64,7 +68,7 @@ class CommentController extends ApiController
         $id = $params[":ID"];
         session_start();
         $comentario = $this->model->getComment($id);
-        if ($_SESSION['ADMIN'] && $comentario)
+        if ($this->auth->checkAdmin() && $comentario)
         {
             $this->model->delComment($id);
             $this->view->response("Comment deleted", 200);
