@@ -5,9 +5,9 @@ require_once "./controller/CategoriaController.php";
 require_once "./model/CategoriaModel.php";
 require_once "./controller/UserController.php";
 require_once "./API/CommentController.php";
-require_once "Controller.php";
+require_once "./helpers/AuthHelper.php";
 
-class MuebleController extends Controller
+class MuebleController
 {
     private $model;
     private $view;
@@ -21,7 +21,7 @@ class MuebleController extends Controller
         $this->view = new MuebleView();
         $this->catCont = new CategoriaController();
         $this->catModel = new CategoriaModel();
-        $this->auth = new UserController();
+        $this->auth = new AuthHelper();
     }
 
     //traigo todos los muebles
@@ -40,7 +40,7 @@ class MuebleController extends Controller
 
     function addMueble()
     {
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->insertMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat']);
             header('Location:' . BASE_URL . 'home');
@@ -49,7 +49,7 @@ class MuebleController extends Controller
 
     function editMueble($id)
     {
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->updateMueble($_POST['furn'], $_POST['desc'], $_POST['price'], $_POST['cat'], $id);
             header('Location:' . BASE_URL . 'home');
@@ -58,7 +58,7 @@ class MuebleController extends Controller
 
     function delMueble($id)
     {
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->deleteMueble($id);
             header('Location:' . BASE_URL . 'home');

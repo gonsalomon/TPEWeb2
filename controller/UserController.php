@@ -1,17 +1,19 @@
 <?php
 require_once './view/UserView.php';
 require_once './model/UserModel.php';
-require_once "Controller.php";
+require_once "./helpers/AuthHelper.php";
 
-class UserController extends Controller
+class UserController
 {
     private $model;
     private $view;
+    private $auth;
 
     function __construct()
     {
         $this->model = new AuthModel();
         $this->view = new AuthView();
+        $this->auth = new AuthHelper();
     }
 
     function auth()
@@ -77,7 +79,7 @@ class UserController extends Controller
     function delUser($id)
     {
         session_start();
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->delUser($id);
             header('Location:' . BASE_URL . 'editUsers');
@@ -87,10 +89,12 @@ class UserController extends Controller
     function toggleAdmin($id)
     {
         session_start();
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->toggleAdmin($id);
             header('Location:' . BASE_URL . 'editUsers');
+            $user = $this->model->getUserById($id);
+            $_SESSION['ADMIN'] = $user->is_admin;
         }
     }
 

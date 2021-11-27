@@ -1,17 +1,19 @@
 <?php
 require_once "./model/CategoriaModel.php";
 require_once "./view/CategoriaView.php";
-require_once "Controller.php";
+require_once "./helpers/AuthHelper.php";
 
-class CategoriaController extends Controller
+class CategoriaController
 {
     private $model;
     private $view;
+    private $auth;
 
     function __construct()
     {
         $this->model = new CategoriaModel();
         $this->view = new CategoriaView();
+        $this->auth = new AuthHelper();
     }
 
     //traigo todas las categorias
@@ -36,7 +38,7 @@ class CategoriaController extends Controller
 
     function addCategoria()
     {
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->addCategoria($_POST['categoria'], $_POST['descripcion']);
             header('Location:' . BASE_URL . 'viewAllCats');
@@ -45,7 +47,7 @@ class CategoriaController extends Controller
 
     function delCategoria($id)
     {
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->delCategoria($id);
             header('Location:' . BASE_URL . 'viewAllCats');
@@ -54,7 +56,7 @@ class CategoriaController extends Controller
 
     function editCategoria($id)
     {
-        if ($this->checkAdmin())
+        if ($this->auth->checkAdmin())
         {
             $this->model->editCategoria($_POST['categoria'], $_POST['descripcion'], $id);
             header('Location:' . BASE_URL . 'viewAllCats');

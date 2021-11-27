@@ -5,7 +5,9 @@ let url = "api/comments";
 
 async function loadComments(postId) {
   let data;
-  let admin = document.getElementById("isAdmin");
+  let admin = document.getElementById("isAdmin").value;
+  console.log(1 == '1');
+  console.log(admin);
   let c = await fetch(`${url}/all/${postId}`);
   data = await c.json();
   // document.getElementById('commentsContainer').innerHTML = data;
@@ -18,10 +20,8 @@ async function loadComments(postId) {
         <h3>${data[i]["user_mail"]} valoró: ${data[i]["puntaje"]}/5</h3>
         <p>${data[i]["comment"]}</p>`;
 
-    if (admin) {
-      document.getElementById(
-        "commentsContainer"
-      ).innerHTML += `
+    if (admin == 1) {
+      document.getElementById("commentsContainer").innerHTML += `
         <button id="buttonDel${data[i]["id"]}" onclick="deleteComment(${data[i]["id"]})">Borrar comentario</a>
         <button id="buttonUpd${data[i]["id"]}" onclick="updateComment(${data[i]["id"]})">Editar comentario</a>`;
     }
