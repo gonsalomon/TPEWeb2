@@ -10,6 +10,7 @@ class MuebleModel
     }
 
     //meto connect acá porque es donde mejor se contextualiza
+    //tremenda repetición de código, ya teníamos this->db para usar, sólo había que instanciar un MuebleModel
     function connect()
     {
         return new PDO('mysql:host=localhost;' . 'dbname=mueble;charset=utf8', 'root', '');
@@ -23,7 +24,7 @@ class MuebleModel
         return $muebles;
     }
 
-    function getMueble($id) 
+    function getMueble($id)
     {
         $sentencia = $this->db->prepare("SELECT * FROM mueble WHERE id_mueble=?");
         $sentencia->execute(array($id));
