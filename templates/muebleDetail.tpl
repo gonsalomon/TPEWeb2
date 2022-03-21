@@ -52,7 +52,7 @@
     <input id="muebleId" value="{$mueble[0]->id_mueble}">
 </form>
 {else}
-<p>Puedes logearte para dejar comentarios</p>
+<p>Puedes loguearte para dejar comentarios</p>
 {/if}
 
 <div id="commentsContainer"></div>
